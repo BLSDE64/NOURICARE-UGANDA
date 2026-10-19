@@ -23,8 +23,8 @@
             else {
                 const price = parseInt(p.dataset.price, 10);
                 summary.innerHTML = price
-                    ? `<strong>${n} × ${p.value}</strong> — estimated <strong>UGX ${(price * n).toLocaleString("en-UG")}</strong>. Delivery is confirmed by our team.`
-                    : `<strong>${n} × ${p.value}</strong> — our team will confirm the price when they contact you.`;
+                    ? `<strong>${n} × ${p.value}</strong>, estimated <strong>UGX ${(price * n).toLocaleString("en-UG")}</strong>. Delivery is confirmed by our team.`
+                    : `<strong>${n} × ${p.value}</strong>, our team will confirm the price when they contact you.`;
             }
         }
         if (wa) {
