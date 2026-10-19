@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | Nouricare Uganda</title>
+
+  <link href="img/icon nutri.png" rel="icon">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- AOS Animations -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(130deg, #e8ffe8, #caffdd, #f0fff4);
+      background-size: 300% 300%;
+      animation: bgMove 10s ease infinite;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Confetti Canvas */
+    #confettiCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    /* Soft floating shapes */
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.25;
+      animation: float 8s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .shape1 { width: 180px; height: 180px; background: #62ff84; top: 10%; left: 5%; animation-delay: 0s; }
+    .shape2 { width: 250px; height: 250px; background: #baffc7; bottom: 5%; right: 10%; animation-delay: 2s; }
+    .shape3 { width: 140px; height: 140px; background: #90ffab; bottom: 20%; left: 20%; animation-delay: 1s; }
+
+    @keyframes float {
+      0% { transform: translateY(0) }
+      50% { transform: translateY(-40px) }
+      100% { transform: translateY(0) }
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* THANK YOU CARD */
+    .thank-you-card {
+      position: relative;
+      z-index: 20;
+      width: 95%;
+      max-width: 520px;
+      padding: 45px 40px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+      text-align: center;
+      animation: popIn 0.7s ease;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Success Icon Glow */
+    .thank-you-card i {
+      font-size: 70px;
+      color: #28c76f;
+      animation: pulse 2s infinite;
+      text-shadow: 0 0 15px rgba(42, 216, 95, 0.6);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.14); opacity: 0.9; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .thank-you-card h1 {
+      font-weight: 800;
+      color: #1e8e43;
+      margin-bottom: 10px;
+    }
+
+    .thank-you-card p {
+      color: #267c4f;
+      font-size: 16.5px;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .btn-home {
+      background: #28c76f;
+      color: #fff;
+      border-radius: 30px;
+      padding: 12px 32px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .btn-home:hover {
+      background: #20b55a;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(32, 181, 90, 0.4);
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Floating Shapes -->
+  <div class="floating-shape shape1"></div>
+  <div class="floating-shape shape2"></div>
+  <div class="floating-shape shape3"></div>
+
+  <!-- Thank You Card -->
+  <div class="thank-you-card" data-aos="zoom-in">
+    <i class="fa-solid fa-circle-check mb-3"></i>
+    <h1>Thank You!</h1>
+    <p>Your order has been received successfully.<br>
+    Our team will contact you shortly to confirm your delivery.</p>
+
+    <a href="index.html" class="btn btn-home">Back to Home</a>
+  </div>
+
+  <!-- AOS Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <!-- Confetti Script -->
+  <script>
+    const canvas = document.getElementById("confettiCanvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const confetti = [];
+    const colors = ["#2ecc71", "#27ae60", "#a3ffba", "#58d68d", "#d4ffdb"];
+
+    function ConfettiPiece() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * -canvas.height;
+      this.size = Math.random() * 8 + 4;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.speed = Math.random() * 3 + 1;
+      this.rotation = Math.random() * 360;
+      this.rotationSpeed = Math.random() * 4 - 2;
+
+      this.update = () => {
+        this.y += this.speed;
+        this.rotation += this.rotationSpeed;
+
+        if (this.y > canvas.height) {
+          this.y = -10;
+          this.x = Math.random() * canvas.width;
+        }
+      };
+
+      this.draw = () => {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate((this.rotation * Math.PI) / 180);
+        ctx.fillStyle = this.color;
+        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+        ctx.restore();
+      };
+    }
+
+    function initConfetti() {
+      for (let i = 0; i < 150; i++) {
+        confetti.push(new ConfettiPiece());
+      }
+    }
+
+    function animateConfetti() {
+      requestAnimationFrame(animateConfetti);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      confetti.forEach((piece) => {
+        piece.update();
+        piece.draw();
+      });
+    }
+
+    initConfetti();
+    animateConfetti();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+
+</body>
+</html>

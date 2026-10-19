@@ -1,0 +1,8 @@
+{
+  "name": "nouricare-site",
+  "private": true,
+  "description": "Nouricare Uganda website — Netlify Functions + Netlify Blobs backend",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

@@ -1,0 +1,5 @@
+Options -Indexes
+# Internal files must never be opened directly from the browser
+<FilesMatch "^(_bootstrap|config)\.php$">
+    Require all denied
+</FilesMatch>

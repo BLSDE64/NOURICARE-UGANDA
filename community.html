@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Nouricare Uganda - Community</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="img/icon nutri.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Animation & Carousel -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <!-- Swiper (if you use it) -->
+  <link href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Custom Styles (single consolidated block) -->
+  <style>
+    :root{
+      --nouricare-green: #3b8a42;
+      --nouricare-soft: #eff8ef;
+      --nouricare-cream: #fff9f0;
+      --nouricare-dark: #264524;
+      --rounded: 14px;
+    }
+
+    /* Base */
+    body { font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #333; -webkit-font-smoothing:antialiased; background:#fff; }
+    .muted { color: #6b6b6b; }
+
+    /* NAV */
+    .navbar { z-index: 1100; }
+
+    /* HERO */
+    .nouricare-hero {
+      min-height: 52vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(0deg, rgba(59,138,66,0.85), rgba(59,138,66,0.60)),
+                  url('img/community-banner.jpg') center/cover no-repeat;
+      color: white;
+      text-align:center;
+      padding: 6rem 0;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+    .nouricare-hero h1 { font-weight:700; letter-spacing: -.5px; }
+    .nouricare-hero p.lead { max-width: 820px; margin: 0 auto; opacity: .95; }
+
+    /* Counters */
+    .counters { margin-top:-40px; }
+    .counter-card { border-radius: 12px; background: white; padding: 24px; box-shadow: 0 10px 30px rgba(20,40,20,0.06); }
+    .counter-number { font-size: 2.25rem; color: var(--nouricare-green); font-weight:700; }
+
+    /* Story cards */
+    .story-card { background: white; border-radius: var(--rounded); overflow:hidden; transition: transform .28s ease, box-shadow .28s ease; }
+    .story-card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(20,40,20,.09); }
+    .story-img { height: 190px; object-fit:cover; width:100%; }
+
+    /* Filters */
+    .filters .btn { border-radius: 999px; }
+    .filters .btn.active { background: var(--nouricare-green); color:white; border-color: transparent; }
+
+    /* Program card (merged modern) */
+    .program-card {
+      border-radius: 12px;
+      padding: 26px;
+      background: linear-gradient(180deg, #fff, #fbfff7);
+      box-shadow: 0 10px 30px rgba(38,69,36,0.05);
+      text-align:center;
+    }
+    .program-card .icon, .icon-wrapper { font-size: 28px; width:72px; height:72px; border-radius: 50%; display:inline-flex; align-items:center; justify-content:center; background:var(--nouricare-soft); color:var(--nouricare-green); margin-bottom:14px; }
+
+    /* Timeline */
+    .timeline { position: relative; margin-left: 20px; }
+    .timeline-item { position: relative; padding-left: 40px; margin-bottom: 30px; }
+    .timeline-bullet { position: absolute; left: 0; top: 6px; width: 14px; height: 14px; background: var(--nouricare-green); border-radius: 50%; z-index: 2; }
+    .timeline-item::before { content: ""; position: absolute; left: 7px; top: 20px; width: 2px; height: calc(100% - 20px); background: #bcdcc2; }
+    .timeline-item h6 { position: relative; padding-left: 20px; }
+    .timeline-item h6::before { content: ""; position: absolute; left: -20px; top: 10px; width: 20px; height: 2px; background: var(--nouricare-green); }
+
+    /* Testimonials */
+    .testimonial-card { background: white; border-radius: 12px; padding: 22px; box-shadow: 0 12px 30px rgba(0,0,0,0.06); min-height:150px; }
+
+    /* Reports */
+    .report-list .list-group-item { border-radius: 10px; margin-bottom: 8px; border: none; box-shadow: 0 6px 18px rgba(20,40,20,0.03); }
+
+    /* Gallery */
+    .page-header {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/gallery-header.jpg') center/cover no-repeat;
+      color: #fff;
+      padding: 160px 0;
+      text-align: center;
+    }
+    .page-header h1 { font-weight: 700; font-size: 3rem; }
+    .gallery-section { background-color: #f8f9fa; padding: 80px 0; }
+    .gallery-card { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.1); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .gallery-card:hover img { transform: scale(1.1); }
+    .gallery-overlay { position: absolute; bottom: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; color: #fff; opacity: 0; transition: opacity 0.4s ease; }
+    .gallery-card:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay h5 { font-weight: 700; margin-bottom: 5px; }
+    .gallery-overlay p { font-size: 0.9rem; margin-bottom: 0; color: #e8e8e8; }
+    .badge-category { background: #3ba76f; font-size: 0.8rem; padding: 6px 12px; border-radius: 50px; position: absolute; top: 15px; left: 15px; }
+
+    /* Glass style (used in other pages) */
+    .glass-card { background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.3); transition: all 0.4s ease; border-radius: 25px; }
+
+    /* small helpers */
+    .btn-nouricare { background: var(--nouricare-green); color: #fff; border: none; }
+    .btn-nouricare:hover { background: #2f6f35; }
+    .btn-green { background: var(--nouricare-green); color: white; border: none; }
+    .btn-green:hover { background: #3d8f41; }
+    .bg-green { background-color: var(--nouricare-green) !important; color:#fff; }
+
+    /* Program & story distinct styles (merge second set) */
+    .section-title { font-size: 32px; color: var(--nouricare-green); font-weight: 700; }
+    .story-card .story-body { padding: 20px; }
+
+    /* small responsive adjustments */
+    @media (min-width:1200px){
+      .nouricare-hero { padding: 8rem 0; }
+      .counters { margin-top:-60px; }
+    }
+
+
+   /* Gradient Background */
+.bg-light-gradient {
+  background: linear-gradient(180deg, #f9f9f9 0%, #ffffff 100%);
+}
+
+/* Filter Buttons */
+.filter-btn {
+  border: 1px solid #ccc;
+  padding: 6px 16px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: #198754;
+  color: #fff;
+  border-color: #198754;
+}
+
+/* Story Card Layout */
+.story-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Image Styling */
+.story-img-wrap {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.story-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.story-card:hover .story-img {
+  transform: scale(1.05);
+}
+
+/* Text Content */
+.story-content {
+  padding: 25px;
+}
+
+.story-title {
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.story-text {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Desktop layout improvement */
+@media (min-width: 992px) {
+  #stories-grid .story-item:nth-child(even) .story-card {
+    margin-top: 20px;
+  }
+}
+
+
+
+
+/* =============== MASONRY GRID =============== */
+.masonry-grid {
+  column-count: 2;         /* Number of columns on desktop */
+  column-gap: 2rem;        /* Space between columns */
+}
+
+@media (max-width: 768px) {
+  .masonry-grid {
+    column-count: 1;       /* Mobile = 1 column */
+  }
+}
+
+.story-item {
+  break-inside: avoid;     /* Prevents card from splitting */
+  margin-bottom: 2rem;     /* Space between cards vertically */
+}
+
+/* =============== CARD DESIGN =============== */
+.story-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+/* =============== IMAGE WRAPPER =============== */
+.story-img-wrap {
+  height: 250px;
+  overflow: hidden;
+}
+
+.story-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+.story-content p,
+.story-content ul,
+.story-content li {
+  text-align: justify;
+}
+
+/* =============== CONTENT =============== */
+.story-content {
+  padding: 22px;
+  text-align: justify;
+}
+
+.story-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.story-text {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #555;
+}
+
+.text-nouricare {
+  color: #2c8f4e;
+}
+
+/* =============== FILTER BUTTONS =============== */
+.filter-btn {
+  border-radius: 50px;
+  padding: 6px 18px;
+  border: 1px solid #ccc;
+  transition: 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: #2c8f4e;
+  color: #fff;
+  border-color: #2c8f4e;
+}
+#stories .story-card ul {
+  margin: 0;
+  padding-left: 1.3rem;
+}
+
+#stories .story-card ul li {
+  margin-bottom: .4rem;
+  font-size: 0.95rem;
+}
+.nouricare-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 0;
+
+  /* 🔥 THIS IS YOUR BACKGROUND IMAGE */
+  background: 
+    linear-gradient(0deg, rgba(196, 209, 196, 0.7), rgba(186, 215, 189, 0.35)),
+    url('img/impactbackg.jpeg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3 px-4">
+    <a href="index.html" class="navbar-brand">
+      <img src="img/Official Nouricare Logo .png" alt="Nouricare Uganda" style="max-height: 60px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto">
+        <a href="index.html" class="nav-item nav-link">Home</a>
+        <a href="gallery.html" class="nav-item nav-link">Gallery</a>
+        <a href="index.html#About" class="nav-item nav-link">About Us</a>
+        <a href="community.html" class="nav-item nav-link active">Community</a>
+      </div>
+    </div>
+  </nav>
+
+ <!-- HERO -->
+<header class="nouricare-hero">
+  <div class="container position-relative text-center">
+    <h1 class="display-5 text-white" data-aos="fade-up">Nouricare Community Impact</h1>
+    <p class="lead mt-3 text-white" data-aos="fade-up" data-aos-delay="120">
+      We empower families with nutrition, training and sustainable programs — read our stories, watch our work, and join us in making a lasting impact.
+    </p>
+
+    <div class="mt-4" data-aos="fade-up" data-aos-delay="220">
+      <a href="#stories" class="btn btn-outline-light rounded-pill px-4 py-2 me-2">Explore Stories</a>
+      <a href="#programs" class="btn btn-nouricare rounded-pill px-4 py-2">Support Our Work</a>
+    </div>
+  </div>
+</header>
+
+
+
+  <!-- COUNTERS -->
+  <section class="container counters py-4">
+    <div class="row g-3">
+
+      <div class="col-sm-6 col-md-3">
+        <div class="counter-card text-center p-3">
+          <div class="muted">Meals Served</div>
+          <div class="counter-number" data-target="3443">0</div>
+          <div class="muted small">Porridge flour</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="counter-card text-center p-3">
+          <div class="muted">Families Reached</div>
+          <div class="counter-number" data-target="942">0</div>
+          <div class="muted small">Since March 2025</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="counter-card text-center p-3">
+          <div class="muted">Number of Kgs</div>
+          <div class="counter-number" data-target="157">0</div>
+          <div class="muted small">Number of Kgs</div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="counter-card text-center p-3">
+          <div class="muted">Active Volunteers</div>
+          <div class="counter-number" data-target="7">0</div>
+          <div class="muted small">Local partners</div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+<!-- IMPACT STORIES -->
+<section id="stories" class="py-5 bg-light-gradient">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-between mb-5">
+      <div>
+        <h2 class="fw-bold display-6 text-nouricare" data-aos="fade-right">Impact Stories & Blog</h2>
+        <p class="text-muted mb-0">Real experiences from the communities we proudly serve.</p>
+      </div>
+
+      <div class="filters" data-aos="fade-left">
+        <button class="btn filter-btn active" data-filter="*">All</button>
+        <button class="btn filter-btn" data-filter="feeding">Feeding</button>
+        <button class="btn filter-btn" data-filter="Roadmap">Roadmap</button>
+        <button class="btn filter-btn" data-filter="women">Women</button>
+      </div>
+    </div>
+
+    <!-- Masonry Grid -->
+    <div id="stories-grid" class="masonry-grid">
+
+      <!-- Story 1 -->
+      <div class="story-item" data-category="feeding">
+        <div class="story-card shadow-lg">
+          <div class="story-img-wrap">
+            <img src="img/mbarara.jpeg" class="story-img" alt="">
+          </div>
+
+          <div class="story-content">
+            <h4 class="story-title">Feeding Hope in Mbarara</h4>
+            <p class="story-text">
+              The secret weapon for high performance isn't a new app—it's what's in your bowl.
+              A balanced diet fuels clarity, sustained energy, and well-being. At Nouricare Uganda,
+              we simplify healthy living through a scientifically formulated porridge blend.
+              <br><br><strong>By: Mambira Nawuka</strong>
+            </p>
+
+            <div class="text-end">
+              <a href="index.html#Order" class="btn btn-success btn-sm rounded-pill px-4">Place Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story 2 -->
+      <div class="story-item" data-category="Roadmap">
+        <div class="story-card shadow-lg">
+          <div class="story-img-wrap">
+            <img src="img/10 million lives.jpeg" class="story-img" alt="">
+          </div>
+
+          <div class="story-content">
+            <h4 class="story-title">The Roadmap to 10 Million Lives by 2035</h4>
+            <p class="story-text">
+              Every maneuverstarts with a compelling vision. For Nouricare Uganda ltd., that vision was simple
+              yet radical: to eliminate a preventable crisis caused by malnutrition and become Africa’s leading
+              partner in nutritional excellence. Our journey purposes to respond to a profound need, charting
+              an ambitious course for regional impact.
+
+             <br><br><strong>An origin in urgent need</strong>
+             <br><br>Our roots are grounded in the grim reality that malnutrition is systematically robbing our
+
+            communities of their potential. Observing severe impact on vulnerable groups, especially the
+            crisis of low birth weight among infants, we recognized the urgent need for an affordable
+            nutritional product that offered superior quality, customization, and absolute efficacy.
+            As a result, Nouricare reloaded, a scientifically formulated "Quadro-formula" derived from highquality     local ingredients was created. Not as a generic supplement, but as a targeted nutritional
+            solution rich in protein, omega-3 fatty acids, and essential vitamins, tailored to support life's most
+            ritical stages. Our commitment to integrity and trust was embedded from day one: by producing
+            every blend freshly made to order, we guarantee potency and build an unshakeable bond with
+            the families that depend on us.
+
+             <br><br><strong>The future map</strong>
+             <br><br>Our journey is guided by our core values; nutritional excellence, integrity and trust, vitality and
+              impact, and commitment to sustainability.
+              Our immediate focus is to consolidate leadership in Uganda and start on regional expansion that
+              is;
+          <p>• Establish Nouricare products as the leading prescribed nutritional supplements in
+              Uganda, driven by partnerships with hospitals, health food stores, and pharmacies, we
+             look to command a greater portion of the market share.</p> 
+          <p>• Achieve a 99% customer satisfaction rate on freshness and potency by optimizing our
+            unique made-on-demand production model.</p>
+         <p>• Finally, successfully launch distribution into two neighboring East African countries,
+             proving our model's effectiveness across new markets.</p>
+          By 2035, Nouricare will be synonymous with life-changing impact across East Africa.
+          We want to be the most trusted and sustainably packaged nutritional partner across the region,
+            committed to driving a measurable reduction in malnutrition and ensuring optimal health and
+            vitality for over 10 million vulnerable individuals, including babies, children, breastfeeding
+            mothers, and the elderly. We will continuously invest in Research & Development (R&D) to enhance our product lineage,
+            maintain pioneering stance on sustainability and keep our promise of zero non-compostable
+             waste through innovative packaging.
+             Our journey is more than just business; it is about rewriting the health narrative for millions of
+             people. Join us as a customer or partner, and help us build a nutritionally empowered future.
+
+
+
+
+
+            <br><br><strong>By: Nouricare Team</strong>
+
+            </p>
+
+            <div class="text-end">
+              <a href="index.html#Order" class="btn btn-success btn-sm rounded-pill px-4">Place Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story 3 -->
+      <div class="story-item" data-category="women">
+        <div class="story-card shadow-lg">
+          <div class="story-img-wrap">
+            <img src="img/mothers.jpeg" class="story-img" alt="">
+          </div>
+
+          <div class="story-content">
+            <h4 class="story-title">Nutrition Support for Mothers</h4>
+            <p class="story-text">
+              Our maternal nutrition program trained 80 mothers on improved feeding practices,
+              safe breastfeeding, and balanced household nutrition for infants and young children.
+            </p>
+
+            <div class="text-end">
+              <a href="index.html#Order" class="btn btn-success btn-sm rounded-pill px-4">Place Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+       <div class="story-item" data-category="women">
+        <div class="story-card shadow-lg">
+          <div class="story-img-wrap">
+            <img src="img/nutrition demand.jpg" class="story-img" alt="">
+          </div>
+
+          <div class="story-content">
+            <h4 class="story-title">The Problem: Alarming global reality demands</h4>
+            <p class="story-text">
+              There is a silent crisis of maternal and child malnutrition which is not just a regional issue
+              but a global emergency threatening the future of over 19.8 million newborns worldwide
+              annually. That’s one in every seven babies born globally with Low Birth Weight (LBW).
+              In Uganda, this crisis is even more pronounced. A staggering 25.5% of newborns suffer
+              LBW that is, one in four babies starts life facing an immediate, systemic disadvantage. This
+              isn't just a number, it is a direct result of inadequate maternal nutrition, a failure that
+              carries catastrophic, lifelong consequences.
+              You must choose Nouricare today to protect the next generation.
+              <br><br><strong>What Happens If We Don't Act</strong>
+             <br><br>If maternal malnutrition and the resulting LBW crisis are not addressed right now, the
+              consequences are irreversible and devastating, affecting not only families but the entire
+              nation:
+              LBW infants are 20 to 40 times more likely to die within their first month of life than
+              normal-weight babies i.e. Increased mortality. Whereas survivors may face an increased
+              risk of permanent developmental and cognitive delays presenting as lower IQ, poor fetal
+              nutrition "programs" the body for illness risking adult-onset chronic conditions like
+              diabetes, cardiovascular disease, and hypertension.
+              Stunted growth and impaired cognitive function lower educational attainment and
+              reduced adult productivity, costing the country billions in lost human capital.
+
+             <br><br><strong>The Solution: Why Choose Nouricare? </strong>
+             <br><br><ul class="text-muted" style="padding-left: 1.2rem; line-height: 1.6;">
+             <li>Scientifically formulated with essential proteins, minerals, and Omega-3s.</li>
+             <li>Freshly made-to-order for maximum potency and absorption.</li>
+            <li>Customized variants for babies, mothers, elderly, and vulnerable groups.</li>
+            <li>Guaranteed nutrient accuracy through our made-on-demand process.</li>
+            <li>100% plastic-free, compostable packaging for a healthier planet.</li>
+            </ul>
+
+            <br><br><strong>Call to Action </strong>
+             <br><br>The window of opportunity to ensure optimal fetal and infant development is short and
+             finite; it is now. Delaying nutritional intervention is gambling with a child's entire future.
+             Secure the future health, vitality, and cognitive potential of your loved ones. Choose the
+             high-impact, custom nutrition of Nouricare today. Visit our platform or call us to place
+             your fresh, potent order now!
+
+
+             <br><br><strong>By: Nouricare Team</strong>
+
+
+
+            </p>
+
+            <div class="text-end">
+              <a href="index.html#Order" class="btn btn-success btn-sm rounded-pill px-4">Place Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- End Masonry Grid -->
+
+  </div>
+</section>
+
+
+  <!-- MERGED PROGRAMS (combined A + B) -->
+  <section id="programs" class="py-5 bg-light">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2 class="h3">Our Programs</h2>
+          <p class="muted mb-0">Practical programs that build skills, improve nutrition and create livelihoods.</p>
+        </div>
+        <div>
+          <a href="#reports" class="btn btn-outline-secondary rounded-pill">See Reports</a>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="program-card">
+            <div class="icon"><i class="fa fa-chalkboard-user"></i></div>
+            <h5>Community Trainings</h5>
+            <p class="muted">Hands-on workshops on nutrition, porridge preparation and small-business skills.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="80">
+          <div class="program-card">
+            <div class="icon"><i class="fa fa-hand-holding-heart"></i></div>
+            <h5>Nutrition Support</h5>
+            <p class="muted">Distribution of porridge flour and nutrition kits to vulnerable families.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="160">
+          <div class="program-card">
+            <div class="icon"><i class="fa fa-people-roof"></i></div>
+            <h5>Partner Projects</h5>
+            <p class="muted">Collaborations that provide sustainable solutions and scale impact.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO HIGHLIGHT -->
+<section class="py-5">
+  <div class="container">
+    <div class="row align-items-center g-4">
+
+      <div class="col-md-6" data-aos="fade-right">
+        <h3>Watch Our Work</h3>
+        <p class="muted">Short highlights from our most recent community activities and trainings.</p>
+
+        <ul class="muted">
+          <li>Nutrition workshops & cooking demos</li>
+          <li>Youth training sessions</li>
+          <li>Distribution & community outreach</li>
+        </ul>
+
+        <!-- JOIN WHATSAPP COMMUNITY BUTTON -->
+        <a 
+          href="https://whatsapp.com/channel/0029VbAxsDMEAKWHSIkNUj2x" 
+          target="_blank"
+          class="btn btn-success mt-3 px-4 py-2 rounded-pill d-inline-flex align-items-center gap-2 shadow-sm"
+          style="font-weight: 600;"
+        >
+          <i class="fab fa-whatsapp fs-5"></i>
+          Join Our Community
+        </a>
+
+      </div>
+
+      <div class="col-md-6" data-aos="fade-left">
+        <!-- Video thumbnail -->
+        <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm position-relative">
+          <img src="img/nutrivid.png" alt="Nouricare video" class="w-100 h-100 object-fit-cover">
+          <a href="#" 
+             class="position-absolute top-50 start-50 translate-middle btn btn-lg btn-nouricare rounded-circle" 
+             data-bs-toggle="modal" 
+             data-bs-target="#videoModal" 
+             style="width:72px; height:72px; display:flex; align-items:center; justify-content:center;">
+            <i class="fa fa-play"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- VIDEO MODAL (fixed/complete) -->
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">Nouricare — Community Highlights</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body p-0">
+        <div class="ratio ratio-16x9">
+          <iframe width="679" height="382" 
+                  src="https://www.youtube.com/embed/vF5o8Iu0ZH4" 
+                  title="Introducing Noricare Plus👌" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerpolicy="strict-origin-when-cross-origin" 
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- TIMELINE -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="h5">Our Journey & Achievements</h3>
+        <small class="muted">Milestones that shaped our impact</small>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-up">
+          <span class="timeline-bullet"></span>
+          <h6 class="mb-1">2025 — Founded</h6>
+          <p class="muted mb-0">Nouricare launched with a mission to improve nutrition for children and families.</p>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="80">
+          <span class="timeline-bullet"></span>
+          <h6 class="mb-1">March 2025 — First Community Pilot</h6>
+          <p class="muted mb-0">Pilot feeding program reached 1,200 children across three districts.</p>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="160">
+          <span class="timeline-bullet"></span>
+          <h6 class="mb-1">April 2025 — Training Scale-up</h6>
+          <p class="muted mb-0">Expanded training programs to include entrepreneurship and food processing.</p>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="240">
+          <span class="timeline-bullet"></span>
+          <h6 class="mb-1">June 2025 — Region Partnership</h6>
+          <p class="muted mb-0">Partnered with local organizations to scale distribution and training.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPORTS -->
+  <section id="reports" class="py-5 bg-white">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">Reports & Publications</h2>
+
+      <div class="list-group shadow-sm">
+        
+        <a href="docs/NDPIII-Finale_Compressed.pdf" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+          National Development Plan III
+          <span class="badge bg-green rounded-pill">Download</span>
+        </a>
+
+
+
+        <a href="docs/Nouricare Uganda Ltd Product line.pdf" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" download>
+          Nouricare Product Line (PDF)
+          <span class="badge bg-green rounded-pill">Download</span>
+        </a>
+
+
+        <a href="docs/SDG Resource Document_Targets Overview.pdf" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+          Sustainable Development Goals Overview
+          <span class="badge bg-green rounded-pill">Download</span>
+        </a>
+
+        <a href="docs/Uganda_NSA_May2010.pdf" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+          Uganda Nutritional Situation Analysis 2010
+          <span class="badge bg-green rounded-pill">Download</span>
+        </a>
+
+        <a href="docs/Agenda2063_popular_version_en.pdf" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+          Africa Agenda 2063
+          <span class="badge bg-green rounded-pill">Download</span>
+        </a>
+       
+
+         <a href="docs/GEW Training Report 19 November 2025.pdf" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+           GEW Training Report 19 November 2025
+          <span class="badge bg-green rounded-pill">Download</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+ <!-- FOOTER -->
+  <footer class="bg-dark text-light pt-5 pb-3">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <h3 class="fw-bold text-primary mb-4">Nou<span class="text-secondary">ri</span>care</h3>
+          <p>Empowering lives through nutrition, sustainability, and wellness.</p>
+          <div class="d-flex pt-2">
+            <a class="btn btn-square btn-outline-light rounded-circle me-1" href="https://x.com/nouricareuganda?s=09"><i class="fa-brands fa-x"></i></a>
+            <!-- <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-facebook-f"></i></a> -->
+            <a class="btn btn-square btn-outline-light rounded-circle me-1" href="http://www.youtube.com/@NouricareUganda"><i class="fab fa-youtube"></i></a>
+            <a class="btn btn-square btn-outline-light rounded-circle me-0" href="https://www.linkedin.com/company/nouricare-uganda-limited/?viewAsMember=true"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-light mb-3">Quick Links</h5>
+          <a class="btn btn-link text-light" href="index.html#About">About Us</a>
+          <a class="btn btn-link text-light" href="contact.html">Contact</a>
+          <a class="btn btn-link text-light" href="#">Privacy policy</a>
+          <a class="btn btn-link text-light" href="#">Terms & Conditions</a>
+           <a class="btn btn-link text-light" href="#">Support</a>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-light mb-3">Address</h5>
+          <p><i class="fa fa-map-marker-alt me-2"></i>Mbale, Uganda</p>
+          <p><i class="fa fa-phone-alt me-2"></i>+256 785 117257</p>
+          <p><i class="fa fa-envelope me-2"></i>nouricareuganda@gmail.com</p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-light mb-3">Newsletter</h5>
+          <p>Stay updated with our health tips and events.</p>
+          <div class="position-relative" style="max-width: 400px;">
+            <input class="form-control bg-transparent text-light border-light w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+            <button class="btn btn-primary position-absolute top-0 end-0 mt-2 me-2 py-2 px-3">Sign Up</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4 small">
+        © 2025 <strong>Nouricare Uganda</strong>. All Rights Reserved.<br>
+    <span class="text-secondary">Designed by 
+        <a href="https://wa.me/256761946745?text=Hello%20ES%20Graphics%2C%20I%20am%20interested%20in%20your%20services" 
+           target="_blank" 
+           class="text-primary fw-bold text-decoration-none">
+           ES Graphics
+        </a>
+    </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  
+
+  <script>
+    // Init AOS
+    AOS.init({ once: true, duration: 700 });
+
+    // Animated counters (start when visible)
+    document.addEventListener('DOMContentLoaded', () => {
+      const counters = document.querySelectorAll('.counter-number');
+      const speed = 2000; // ms
+      const runCounter = (el) => {
+        const target = +el.getAttribute('data-target');
+        let start = 0;
+        if (target === 0) { el.textContent = '0'; return; }
+        const stepTime = Math.max(20, Math.floor(speed / target));
+        const timer = setInterval(() => {
+          start += Math.ceil(target / (speed / stepTime));
+          if (start >= target) {
+            el.textContent = target.toLocaleString();
+            clearInterval(timer);
+          } else {
+            el.textContent = start.toLocaleString();
+          }
+        }, stepTime);
+      };
+
+      const obs = new IntersectionObserver((entries, o) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            runCounter(entry.target);
+            o.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.6 });
+
+      counters.forEach(c => obs.observe(c));
+    });
+
+    // Story modal population
+    const storyModal = document.getElementById('storyModal');
+    storyModal && storyModal.addEventListener('show.bs.modal', function (event) {
+      const btn = event.relatedTarget;
+      if (!btn) return;
+      const title = btn.getAttribute('data-title');
+      const img = btn.getAttribute('data-image');
+      const content = btn.getAttribute('data-content');
+      document.getElementById('storyModalLabel').textContent = title || '';
+      document.getElementById('storyModalImage').src = img || '';
+      document.getElementById('storyModalContent').textContent = content || '';
+    });
+
+    // Filters (simple)
+    (function(){
+      const buttons = document.querySelectorAll('.filters button');
+      const items = document.querySelectorAll('#stories-grid .story-item');
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b=>b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          items.forEach(it => {
+            if(filter === '*' || it.getAttribute('data-category') === filter) {
+              it.style.display = 'block';
+              // re-run AOS on visible
+              it.classList.add('aos-animate');
+            } else {
+              it.style.display = 'none';
+            }
+          });
+        });
+      });
+    })();
+
+    // Timeline click highlight
+    document.querySelectorAll('.timeline-item').forEach((el) => {
+      el.addEventListener('click', () => {
+        document.querySelectorAll('.timeline-item').forEach(i => i.style.background = 'transparent');
+        el.style.background = 'rgba(59,138,66,0.03)';
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+
+    // Initialize Swiper (if used)
+    try {
+      const swiper = new Swiper('.mySwiper', {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        loop: true,
+        autoplay: { delay: 4200, disableOnInteraction: false },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        breakpoints: { 768: { slidesPerView: 2 }, 1200: { slidesPerView: 3 } }
+      });
+    } catch(e){ /* ignore if not present */ }
+
+    // Pause video iframe when modal is closed (YouTube)
+    const videoModalEl = document.getElementById('videoModal');
+    videoModalEl && videoModalEl.addEventListener('hidden.bs.modal', () => {
+      const iframe = document.getElementById('videoIframe');
+      if(iframe){
+        // stop playback by resetting src
+        const src = iframe.src;
+        iframe.src = ''; 
+        // small delay then restore (optional)
+        setTimeout(()=> iframe.src = src, 300);
+      }
+    });
+
+
+    const videoModal = document.getElementById("videoModal");
+videoModal.addEventListener("hidden.bs.modal", function () {
+  const iframe = document.getElementById("modalVideo");
+  const videoSrc = iframe.src;
+  iframe.src = videoSrc; // stops the video
+});
+
+
+    // Smooth scroll for internal anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(!href || href === '#' || href.startsWith('mailto:')) return;
+        const target = document.querySelector(href);
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+
+    
+  </script>
+</body>
+</html>

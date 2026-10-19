@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Nouricare Admin</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/nouricare-extras.css" rel="stylesheet">
+</head>
+<body class="admin-shell">
+
+    <div class="admin-topbar">
+        <span class="brand">Nou<span style="color:var(--amber)">ri</span>care · Admin</span>
+        <div>
+            <a href="index.html" class="btn btn-sm btn-outline-light rounded-pill me-2">View Site</a>
+            <button id="logoutBtn" class="btn btn-sm btn-light rounded-pill d-none">Log Out</button>
+        </div>
+    </div>
+
+    <!-- STEP 1: PASSWORD -->
+    <div id="loginView" class="admin-login-wrap d-none">
+        <div class="admin-card">
+            <h4 class="mb-1"><i class="fa fa-lock me-2" style="color:var(--leaf)"></i>Admin Login</h4>
+            <p class="text-muted mb-4" style="font-size:0.9rem;">Step 1 of 2 — enter your email and password.</p>
+            <div id="loginAlert" class="alert admin-alert d-none"></div>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="loginEmail" autocomplete="username" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" id="loginPassword" autocomplete="current-password" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100 rounded-pill py-2" id="loginBtn">Continue</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- STEP 2: AUTHENTICATOR CODE -->
+    <div id="codeView" class="admin-login-wrap d-none">
+        <div class="admin-card text-center">
+            <h4 class="mb-1"><i class="fa fa-mobile-screen me-2" style="color:var(--leaf)"></i>Two-Step Verification</h4>
+            <p class="text-muted mb-4" style="font-size:0.9rem;">Step 2 of 2 — open your authenticator app and enter the 6-digit code for Nouricare Admin.</p>
+            <div id="codeAlert" class="alert admin-alert d-none text-start"></div>
+            <form id="codeForm">
+                <input type="text" class="form-control mfa-code-input mb-3" id="codeInput" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" placeholder="••••••" required>
+                <button type="submit" class="btn btn-success w-100 rounded-pill py-2" id="codeBtn">Verify &amp; Sign In</button>
+            </form>
+            <button type="button" id="codeBack" class="btn btn-link btn-sm mt-3 text-muted">← Use a different account</button>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboardView" class="container py-5 d-none">
+
+        <div class="admin-tabs mb-4">
+            <button type="button" class="admin-tab-btn active" data-tab="updatesTab">Latest Updates</button>
+            <button type="button" class="admin-tab-btn" data-tab="productsTab">Products</button>
+            <button type="button" class="admin-tab-btn" data-tab="galleryTab">Gallery</button>
+        </div>
+
+        <!-- ===================== UPDATES ===================== -->
+        <div id="updatesTab" class="admin-tab-panel">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="admin-card">
+                        <h5 class="mb-4" id="postFormTitle">Post a New Update</h5>
+                        <div id="postAlert" class="alert admin-alert d-none"></div>
+                        <form id="postForm">
+                            <div class="mb-3">
+                                <label class="form-label">Image</label>
+                                <input type="file" class="form-control" id="postImage" accept="image/*" required>
+                                <div class="form-text">When editing, leave empty to keep the current image.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Date</label>
+                                <input type="date" class="form-control" id="postDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Main Title</label>
+                                <input type="text" class="form-control" id="postTitle" maxlength="200" placeholder="e.g. New Distribution Drive in Mbale" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Full Description</label>
+                                <textarea class="form-control" id="postDescription" rows="6" placeholder="Write the full update here..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100 rounded-pill py-2" id="postSubmitBtn">Publish Update</button>
+                            <button type="button" class="btn btn-link w-100 d-none" id="postCancelBtn">Cancel editing</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="admin-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="mb-0">Published Updates</h5>
+                            <button id="refreshBtn" class="btn btn-sm btn-outline-success rounded-pill"><i class="fa fa-rotate"></i> Refresh</button>
+                        </div>
+                        <div id="postsList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== PRODUCTS ===================== -->
+        <div id="productsTab" class="admin-tab-panel d-none">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="admin-card">
+                        <h5 class="mb-4" id="prodFormTitle">Add a Product</h5>
+                        <div id="prodAlert" class="alert admin-alert d-none"></div>
+                        <form id="prodForm">
+                            <div class="mb-3">
+                                <label class="form-label">Product Image</label>
+                                <input type="file" class="form-control" id="prodImage" accept="image/*">
+                                <div class="form-text">Square (1:1) photos look best. When editing, leave empty to keep the current image.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Product Name</label>
+                                <input type="text" class="form-control" id="prodName" maxlength="150" placeholder="e.g. Nouricare Reloaded" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" id="prodDescription" rows="4" maxlength="1000" placeholder="What is it and who is it for?"></textarea>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-7">
+                                    <label class="form-label">Badge text (optional)</label>
+                                    <input type="text" class="form-control" id="prodBadgeText" maxlength="40" placeholder="e.g. Best Seller">
+                                </div>
+                                <div class="col-5">
+                                    <label class="form-label">Badge colour</label>
+                                    <select class="form-select" id="prodBadgeColor">
+                                        <option value="success">Green</option>
+                                        <option value="warning">Yellow</option>
+                                        <option value="info">Blue</option>
+                                        <option value="danger">Red</option>
+                                        <option value="primary">Brand</option>
+                                        <option value="dark">Dark</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-7">
+                                    <label class="form-label">Price in UGX (optional)</label>
+                                    <input type="number" class="form-control" id="prodPrice" min="0" step="100" placeholder="e.g. 25000">
+                                </div>
+                                <div class="col-5">
+                                    <label class="form-label">Display order</label>
+                                    <input type="number" class="form-control" id="prodOrder" value="0">
+                                </div>
+                            </div>
+                            <div class="form-check form-switch mb-4">
+                                <input class="form-check-input" type="checkbox" id="prodActive" checked>
+                                <label class="form-check-label" for="prodActive">Show on the website</label>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100 rounded-pill py-2" id="prodSubmitBtn">Add Product</button>
+                            <button type="button" class="btn btn-link w-100 d-none" id="prodCancelBtn">Cancel editing</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="admin-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="mb-0">Products</h5>
+                            <button id="prodRefreshBtn" class="btn btn-sm btn-outline-success rounded-pill"><i class="fa fa-rotate"></i> Refresh</button>
+                        </div>
+                        <div id="prodList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== GALLERY ===================== -->
+        <div id="galleryTab" class="admin-tab-panel d-none">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="admin-card">
+                        <h5 class="mb-4" id="galleryFormTitle">Add a Gallery Image</h5>
+                        <div id="galleryAlert" class="alert admin-alert d-none"></div>
+                        <form id="galleryForm">
+                            <div class="mb-3">
+                                <label class="form-label">Image</label>
+                                <input type="file" class="form-control" id="galleryImage" accept="image/*" required>
+                                <div class="form-text">When editing, leave empty to keep the current image.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Category</label>
+                                <select class="form-select" id="galleryCategory" required>
+                                    <option value="">-- Select Category --</option>
+                                    <option value="Nutrition">Nutrition</option>
+                                    <option value="Community">Community</option>
+                                    <option value="Promotion">Promotion</option>
+                                    <option value="Production">Production</option>
+                                    <option value="Team">Team</option>
+                                    <option value="Customers">Customers</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Title</label>
+                                <input type="text" class="form-control" id="galleryTitle" maxlength="200" placeholder="e.g. Outreach Programme" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Description (optional)</label>
+                                <textarea class="form-control" id="galleryDescription" rows="3" maxlength="500" placeholder="A short caption..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100 rounded-pill py-2" id="gallerySubmitBtn">Add to Gallery</button>
+                            <button type="button" class="btn btn-link w-100 d-none" id="galleryCancelBtn">Cancel editing</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="admin-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="mb-0">Gallery Images</h5>
+                            <button id="galleryRefreshBtn" class="btn btn-sm btn-outline-success rounded-pill"><i class="fa fa-rotate"></i> Refresh</button>
+                        </div>
+                        <div id="galleryList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

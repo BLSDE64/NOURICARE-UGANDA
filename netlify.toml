@@ -1,0 +1,45 @@
+# If you already have a netlify.toml, merge these sections into it.
+
+# NOTE: no [build] section on purpose — your existing Netlify build/publish
+# settings stay as they are. Only add one if you know you need it.
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Keep backend source and setup files from being served as public web pages
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/tools/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package-lock.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/admin.html"
+  [headers.values]
+    Cache-Control = "no-store"
+    X-Frame-Options = "DENY"

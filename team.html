@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nouricare Uganda- Our Team</title>
+   <link rel="icon" type="image/png" href="img/icon nutri.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+   <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+  <!-- Animation & Carousel -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <!-- Swiper (if you use it) -->
+  <link href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" rel="stylesheet">
+
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --nouricare-green: #2f8f45;
+      --glass-bg: rgba(255,255,255,0.7);
+      --muted: #6c757d;
+    }
+    body{
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #f7fbf7 0%, #eef7ef 100%);
+      color: #222;
+    }
+
+    /* HERO */
+    .team-hero{
+      padding: 80px 0;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(47,143,69,0.06) 0%, rgba(255,255,255,0.5) 100%);
+      margin-bottom: 30px;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+    .team-hero h1 { color: var(--nouricare-green); font-weight: 700; letter-spacing: -.4px; }
+    .team-hero p { color: var(--muted); font-size: 1.05rem; max-width: 900px; margin: 0 auto; }
+
+    /* Search */
+    .team-search {
+      max-width: 640px;
+      margin: -30px auto 30px; /* lift up slightly into the hero */
+      position: relative;
+      z-index: 5;
+    }
+
+    /* CARD GRID (glass style) */
+    .team-grid {
+      gap: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    @media(min-width:700px){
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(min-width:1100px){
+      .team-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .team-card {
+      background: var(--glass-bg);
+      border: 1px solid rgba(47,143,69,0.06);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform .32s ease, box-shadow .32s ease;
+      box-shadow: 0 8px 22px rgba(18, 30, 18, 0.06);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(18,30,18,0.12);
+    }
+
+    .team-photo {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      background: #eee;
+    }
+    .team-photo-placeholder {
+      width: 100%;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(47,143,69,0.08);
+      color: var(--nouricare-green);
+      font-size: 3.5rem;
+    }
+    .team-body {
+      padding: 18px;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .team-name { font-size: 1.15rem; font-weight: 700; color: #173821; margin-bottom: 0; }
+    .team-role { color: var(--nouricare-green); font-weight: 600; margin-bottom: 6px; }
+    .team-qual { color: var(--muted); font-size: .95rem; line-height: 1.45; }
+    .team-qual.pending { font-style: italic; }
+
+    .team-actions {
+      display:flex;
+      gap: .5rem;
+      align-items:center;
+      margin-top:auto;
+    }
+
+    .btn-outline-nouricare {
+      border-radius: 999px;
+      border: 1px solid var(--nouricare-green);
+      color: var(--nouricare-green);
+      background: transparent;
+      padding: .45rem .9rem;
+    }
+    .btn-outline-nouricare:hover {
+      color: #fff;
+      background: var(--nouricare-green);
+    }
+
+    .btn-linkedin {
+      border-radius: 999px;
+      border: 1px solid #0a66c2;
+      color: #0a66c2;
+      background: transparent;
+      padding: .45rem .6rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+    .btn-linkedin:hover {
+      color: #fff;
+      background: #0a66c2;
+    }
+
+    /* small details */
+    .card-meta { font-size: .85rem; color: var(--muted); }
+    .badge-role { background: rgba(47,143,69,0.08); color: var(--nouricare-green); font-weight:600; padding: .25rem .5rem; border-radius: 6px; }
+
+    /* modal content */
+    .modal-body .profile-photo { width: 120px; height: 120px; border-radius: 12px; object-fit:cover; margin-right: 18px; }
+    .modal-body .profile-photo-placeholder { width: 120px; height: 120px; border-radius: 12px; margin-right: 18px; display:flex; align-items:center; justify-content:center; background: rgba(47,143,69,0.08); color: var(--nouricare-green); font-size: 2.5rem; flex-shrink:0; }
+    .modal .profile-name { font-weight:700; font-size: 1.25rem; color: #173821; }
+    .modal .profile-role { color: var(--nouricare-green); font-weight:600; }
+    .modal .profile-qual { color: var(--muted); }
+    .modal .profile-linkedin { display:inline-flex; align-items:center; gap:.4rem; color:#0a66c2; font-weight:600; text-decoration:none; margin-top:6px; }
+    .modal .profile-linkedin:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+
+     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3 px-4">
+    <a href="index.html" class="navbar-brand">
+      <img src="img/Official Nouricare Logo .png" alt="Nouricare Uganda" style="max-height: 60px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto">
+        <a href="index.html" class="nav-item nav-link">Home</a>
+        <a href="gallery.html" class="nav-item nav-link">Gallery</a>
+        <a href="index.html#About" class="nav-item nav-link">About Us</a>
+        <a href="community.html" class="nav-item nav-link active">Community</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="team-hero">
+    <div class="container">
+      <h1 data-aos="fade-down">Meet the Nouricare Team</h1>
+      <p data-aos="fade-up" data-aos-delay="80">
+        Passionate professionals dedicated to delivering science-backed nutrition and sustainable impact.
+        Click any card to view full role & qualifications.
+      </p>
+
+      <!-- Search -->
+      <div class="team-search mt-4" data-aos="fade-up" data-aos-delay="120">
+        <div class="input-group shadow-sm">
+          <span class="input-group-text bg-white border-end-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6 6 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zM12 6a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/></svg></span>
+          <input id="teamSearch" class="form-control border-start-0" type="search" placeholder="Search team by name or role (e.g. CEO, Manager)..." aria-label="Search team">
+          <button class="btn btn-outline-nouricare" id="clearSearch" title="Clear">Clear</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <main class="container mb-5">
+    <div class="team-grid" id="teamGrid">
+
+      <!-- Member template: duplicate for each person -->
+     
+     
+      <!-- 4 -->
+      <article class="team-card" data-aos="fade-up" data-aos-delay="120" data-name="Charity Constantino Zengele" data-role="Financial Controller South Sudan">
+        <img class="team-photo" src="img/charity.png" alt="Charity Constantino Zengele">
+        <div class="team-body">
+          <div>
+            <div class="team-name">Charity Constantino Zingele</div>
+            <div class="team-role">Financial Controller South Sudan</div>
+            <div class="team-qual">Pharmacist & Supply Chain Specialist</div>
+          </div>
+
+          <div class="team-actions">
+            <button class="btn btn-outline-nouricare viewProfile" data-bs-toggle="modal" data-bs-target="#profileModal"
+                    data-name="Charity Constantino Zengele" data-role="Financial Controller South Sudan" data-qual="Pharmacist & Supply Chain Specialist"
+                    data-photo="img/charity.png" data-linkedin="https://www.linkedin.com/in/charity-constantino-zingele-016528316/">
+              View Profile
+            </button>
+            <a href="https://www.linkedin.com/in/charity-constantino-zingele-016528316/" target="_blank" rel="noopener" class="btn-linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#contact" class="btn btn-sm btn-success ms-auto">Contact</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="team-card" data-aos="fade-up" data-aos-delay="160" data-name="Waniale Kevin" data-role="Chief Technician & Manager Uganda">
+        <img class="team-photo" src="img/Wanyale kevin alex.png" alt="Waniale Kevin">
+        <div class="team-body">
+          <div>
+            <div class="team-name">Wanyale Kevin Alex</div>
+            <div class="team-role">Chief Technician & Manager Uganda</div>
+            <div class="team-qual">LLB Legal Counsel</div>
+          </div>
+
+          <div class="team-actions">
+            <button class="btn btn-outline-nouricare viewProfile" data-bs-toggle="modal" data-bs-target="#profileModal"
+                    data-name="Waniale Kevin" data-role="Chief Technician & Manager Uganda" data-qual="LLB Legal Counsel"
+                    data-photo="img/Wanyale kevin alex.png" data-linkedin="https://www.linkedin.com/in/kevin-alex-a92aa9344/">
+              View Profile
+            </button>
+            <a href="https://www.linkedin.com/in/kevin-alex-a92aa9344/" target="_blank" rel="noopener" class="btn-linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#contact" class="btn btn-sm btn-success ms-auto">Contact</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="team-card" data-aos="fade-up" data-aos-delay="200" data-name="Ibra Nabende" data-role="Technician">
+        <img class="team-photo" src="img/ibranew (1).jpeg" alt="Ibra Nabende">
+        <div class="team-body">
+          <div>
+            <div class="team-name">Ibra Nabende</div>
+            <div class="team-role">Technician</div>
+            <div class="team-qual">Nursing Officer</div>
+          </div>
+
+          <div class="team-actions">
+            <button class="btn btn-outline-nouricare viewProfile" data-bs-toggle="modal" data-bs-target="#profileModal"
+                    data-name="Ibra Nabende" data-role="Technician" data-qual="Nursing Officer"
+                    data-photo="img/ibranew (1).jpeg" data-linkedin="https://www.linkedin.com/in/ibra-nabende-36a454357/">
+              View Profile
+            </button>
+            <a href="https://www.linkedin.com/in/ibra-nabende-36a454357/" target="_blank" rel="noopener" class="btn-linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#contact" class="btn btn-sm btn-success ms-auto">Contact</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="team-card" data-aos="fade-up" data-aos-delay="240" data-name="Dr. Martha Lukoosi" data-role="Nutritionist & Dietician">
+        <img class="team-photo" src="img/DR. MARTHA LUKOOS.jpeg" alt="Dr. Martha Lukoosi">
+        <div class="team-body">
+          <div>
+            <div class="team-name">Dr. Martha Lukoosi</div>
+            <div class="team-role">Nutritionist & Dietician</div>
+            <div class="team-qual">Nutritionist & Dietician</div>
+          </div>
+
+          <div class="team-actions">
+            <button class="btn btn-outline-nouricare viewProfile" data-bs-toggle="modal" data-bs-target="#profileModal"
+                    data-name="Dr. Martha Lukoosi" data-role="Nutritionist & Dietician" data-qual="Nutritionist & Dietician"
+                    data-photo="img/DR. MARTHA LUKOOS.jpeg" data-linkedin="https://www.linkedin.com/in/dr-martha-lukoosi-25bab12b2/">
+              View Profile
+            </button>
+            <a href="https://www.linkedin.com/in/dr-martha-lukoosi-25bab12b2/" target="_blank" rel="noopener" class="btn-linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#contact" class="btn btn-sm btn-success ms-auto">Contact</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="team-card" data-aos="fade-up" data-aos-delay="280" data-name="Nabukwasi Sharon" data-role="Chief Marketeer">
+        <img class="team-photo" src="img/sharon.png" alt="Nabukwasi Sharon">
+        <div class="team-body">
+          <div>
+            <div class="team-name">Nabukwasi Sharon</div>
+            <div class="team-role">Chief Marketeer</div>
+            <div class="team-qual">BBA</div>
+          </div>
+
+          <div class="team-actions">
+            <button class="btn btn-outline-nouricare viewProfile" data-bs-toggle="modal" data-bs-target="#profileModal"
+                    data-name="Nabukwasi Sharon" data-role="Chief Marketeer" data-qual="BBA"
+                    data-photo="img/sharon.png" data-linkedin="https://www.linkedin.com/in/%F0%9D%91%81%F0%9D%91%8E%F0%9D%91%8F%F0%9D%91%A2%F0%9D%91%98%F0%9D%91%A4%F0%9D%91%8E%F0%9D%91%A0%F0%9D%91%96-%F0%9D%91%86%E2%84%8E%F0%9D%91%8E%F0%9D%91%9F%F0%9D%91%9C%F0%9D%91%9B-93543b31b/">
+              View Profile
+            </button>
+            <a href="https://www.linkedin.com/in/%F0%9D%91%81%F0%9D%91%8E%F0%9D%91%8F%F0%9D%91%A2%F0%9D%91%98%F0%9D%91%A4%F0%9D%91%8E%F0%9D%91%A0%F0%9D%91%96-%F0%9D%91%86%E2%84%8E%F0%9D%91%8E%F0%9D%91%9F%F0%9D%91%9C%F0%9D%91%9B-93543b31b/" target="_blank" rel="noopener" class="btn-linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#contact" class="btn btn-sm btn-success ms-auto">Contact</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="team-card" data-aos="fade-up" data-aos-delay="320" data-name="Meya Wandawa Ukasha" data-role="Photography & Content">
+        <img class="team-photo" src="img/Meya Wandawa Ukasha.png" alt="Wandawa Ukasha Meya">
+        <div class="team-body">
+          <div>
+            <div class="team-name">Meya Wandawa Ukasha</div>
+            <div class="team-role">Photography & Content Creation</div>
+            <div class="team-qual">BBA</div>
+          </div>
+
+          <div class="team-actions">
+            <button class="btn btn-outline-nouricare viewProfile" data-bs-toggle="modal" data-bs-target="#profileModal"
+                    data-name="Wandawa Ukasha Meya" data-role="Photography & Content Creation" data-qual="BBA"
+                    data-photo="img/Meya Wandawa Ukasha.png" data-linkedin="https://www.linkedin.com/in/meya-ukasha-18a948192/">
+              View Profile
+            </button>
+            <a href="https://www.linkedin.com/in/meya-ukasha-18a948192/" target="_blank" rel="noopener" class="btn-linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#contact" class="btn btn-sm btn-success ms-auto">Contact</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="team-card" data-aos="fade-up" data-aos-delay="360" data-name="Tracy Ololo Ojambo" data-role="Business Development Manager & Jinja Manager">
+        <img class="team-photo" src="img/tracy.jpeg" alt="Tracy Ololo Ojambo">
+        <div class="team-body">
+          <div>
+            <div class="team-name">Tracy Ololo Ojambo</div>
+            <div class="team-role">Business Development Manager & Jinja Manager</div>
+            <div class="team-qual">BBA, B. Accounting & Finance</div>
+          </div>
+
+          <div class="team-actions">
+            <button class="btn btn-outline-nouricare viewProfile" data-bs-toggle="modal" data-bs-target="#profileModal"
+                    data-name="Tracy Ololo Ojambo" data-role="Business Development Manager & Jinja Manager" data-qual="BBA, B. Accounting & Finance"
+                    data-photo="img/tracy.jpeg">
+              View Profile
+            </button>
+            <a href="#contact" class="btn btn-sm btn-success ms-auto">Contact</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 11 -->
+      <article class="team-card" data-aos="fade-up" data-aos-delay="400" data-name="Tina Christine Nafuna" data-role="Sales Personnel Kampala">
+        <img class="team-photo" src="img/Tina.png" alt="Tina Christine Nafuna">
+        <div class="team-body">
+          <div>
+            <div class="team-name">Tina Christine Nafuna</div>
+            <div class="team-role">Sales Personnel — Kampala</div>
+            <div class="team-qual">Civil Engineer</div>
+          </div>
+
+          <div class="team-actions">
+            <button class="btn btn-outline-nouricare viewProfile" data-bs-toggle="modal" data-bs-target="#profileModal"
+                    data-name="Tina Christine Nafuna" data-role="Sales Personnel — Kampala" data-qual="Civil Engineer"
+                    data-photo="img/Tina.png" data-linkedin="https://www.linkedin.com/in/christine-nafuna-2a08a8359/">
+              View Profile
+            </button>
+            <a href="https://www.linkedin.com/in/christine-nafuna-2a08a8359/" target="_blank" rel="noopener" class="btn-linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#contact" class="btn btn-sm btn-success ms-auto">Contact</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 12 -->
+      <article class="team-card" data-aos="fade-up" data-aos-delay="440" data-name="Ogire John Baptist" data-role="Logistics & Procurement Kampala">
+        <img class="team-photo" src="img/OGIRE.png" alt="Ogire John Baptist">
+        <div class="team-body">
+          <div>
+            <div class="team-name">Ogire John Baptist</div>
+            <div class="team-role">Logistics & Procurement — Kampala</div>
+            <div class="team-qual">Intern Medical Student</div>
+          </div>
+
+          <div class="team-actions">
+            <button class="btn btn-outline-nouricare viewProfile" data-bs-toggle="modal" data-bs-target="#profileModal"
+                    data-name="Ogire John Baptist" data-role="Logistics & Procurement — Kampala" data-qual="Intern Medical Student"
+                    data-photo="img/OGIRE.png" data-linkedin="https://www.linkedin.com/in/ogire17782234a/">
+              View Profile
+            </button>
+            <a href="https://www.linkedin.com/in/ogire17782234a/" target="_blank" rel="noopener" class="btn-linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#contact" class="btn btn-sm btn-success ms-auto">Contact</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 13 -->
+      <article class="team-card" data-aos="fade-up" data-aos-delay="480" data-name="Emmanuel" data-role="Tech & Information Specialist">
+        <img class="team-photo" src="img/emmanuel.png" alt="Emmanuel N. Bichacha">
+        <div class="team-body">
+          <div>
+            <div class="team-name">Emmanuel N. Bichacha</div>
+            <div class="team-role">Tech & Information Specialist</div>
+            <div class="team-qual">Information Technology Specialist</div>
+          </div>
+
+          <div class="team-actions">
+            <button class="btn btn-outline-nouricare viewProfile" data-bs-toggle="modal" data-bs-target="#profileModal"
+                    data-name="Emmanuel" data-role="Tech & Information Specialist" data-qual="Tech & Information Specialist"
+                    data-photo="img/emmanuel.png">
+              View Profile
+            </button>
+            <a href="#contact" class="btn btn-sm btn-success ms-auto">Contact</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 14 -->
+      <article class="team-card" data-aos="fade-up" data-aos-delay="520" data-name="Angom Irene" data-role="Marketeer Central Region">
+        <div class="team-photo-placeholder"><i class="fa-solid fa-user"></i></div>
+        <div class="team-body">
+          <div>
+            <div class="team-name">Angom Irene</div>
+            <div class="team-role">Marketeer  Central Region</div>
+            <div class="team-qual pending"> </div>
+          </div>
+
+          <div class="team-actions">
+            <button class="btn btn-outline-nouricare viewProfile" data-bs-toggle="modal" data-bs-target="#profileModal"
+                    data-name="Angom Irene" data-role="Marketeer — Central Region" data-qual="Photo, qualifications & LinkedIn coming soon"
+                    data-photo="">
+              View Profile
+            </button>
+            <a href="#contact" class="btn btn-sm btn-success ms-auto">Contact</a>
+          </div>
+        </div>
+      </article>
+
+    </div> <!-- team-grid -->
+  </main>
+
+  <!-- PROFILE MODAL -->
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-body p-4 d-flex gap-3 align-items-start">
+          <img id="profilePhoto" src="" alt="photo" class="profile-photo">
+          <div id="profilePhotoPlaceholder" class="profile-photo-placeholder" style="display:none;"><i class="fa-solid fa-user"></i></div>
+          <div>
+            <div class="profile-name" id="profileName"></div>
+            <div class="profile-role mb-2" id="profileRole"></div>
+            <div class="profile-qual" id="profileQual"></div>
+            <a href="#" id="profileLinkedin" target="_blank" rel="noopener" class="profile-linkedin" style="display:none;"><i class="fab fa-linkedin-in"></i> View LinkedIn</a>
+            <div class="mt-3">
+              <button class="btn btn-success" data-bs-dismiss="modal">Close</button>
+              <a href="#contact" class="btn btn-outline-nouricare ms-2">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    AOS.init({ once: true, duration: 700 });
+
+    // Profile modal population
+    document.querySelectorAll('.viewProfile').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const name = btn.getAttribute('data-name') || '';
+        const role = btn.getAttribute('data-role') || '';
+        const qual = btn.getAttribute('data-qual') || '';
+        const photo = btn.getAttribute('data-photo') || '';
+        const linkedin = btn.getAttribute('data-linkedin') || '';
+
+        document.getElementById('profileName').textContent = name;
+        document.getElementById('profileRole').textContent = role;
+        document.getElementById('profileQual').textContent = qual;
+
+        const photoEl = document.getElementById('profilePhoto');
+        const placeholderEl = document.getElementById('profilePhotoPlaceholder');
+        if (photo) {
+          photoEl.src = photo;
+          photoEl.style.display = '';
+          placeholderEl.style.display = 'none';
+        } else {
+          photoEl.style.display = 'none';
+          placeholderEl.style.display = 'flex';
+        }
+
+        const linkedinEl = document.getElementById('profileLinkedin');
+        if (linkedin) {
+          linkedinEl.href = linkedin;
+          linkedinEl.style.display = 'inline-flex';
+        } else {
+          linkedinEl.style.display = 'none';
+        }
+      });
+    });
+
+    // Search filter
+    const searchInput = document.getElementById('teamSearch');
+    const clearBtn = document.getElementById('clearSearch');
+    const cards = Array.from(document.querySelectorAll('.team-card'));
+
+    function runFilter(){
+      const q = (searchInput.value || '').trim().toLowerCase();
+      cards.forEach(card => {
+        const name = (card.getAttribute('data-name') || '').toLowerCase();
+        const role = (card.getAttribute('data-role') || '').toLowerCase();
+        const show = !q || name.includes(q) || role.includes(q);
+        card.style.display = show ? 'flex' : 'none';
+      });
+    }
+    searchInput.addEventListener('input', runFilter);
+    clearBtn.addEventListener('click', () => { searchInput.value=''; runFilter(); });
+
+    // keyboard accessibility: Enter on card opens modal of its first button
+    cards.forEach(c => {
+      c.addEventListener('keydown', (ev) => {
+        if(ev.key === 'Enter'){
+          const btn = c.querySelector('.viewProfile');
+          if(btn) btn.click();
+        }
+      });
+    });
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-light pt-5 pb-3">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <h3 class="fw-bold text-primary mb-4">Nou<span class="text-secondary">ri</span>care</h3>
+          <p>Empowering lives through nutrition, sustainability, and wellness.</p>
+          <div class="d-flex pt-2">
+            <a class="btn btn-square btn-outline-light rounded-circle me-1" href="https://x.com/nouricareuganda?s=09"><i class="fa-brands fa-x"></i></a>
+            <!-- <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-facebook-f"></i></a> -->
+            <a class="btn btn-square btn-outline-light rounded-circle me-1" href="http://www.youtube.com/@NouricareUganda"><i class="fab fa-youtube"></i></a>
+            <a class="btn btn-square btn-outline-light rounded-circle me-0" href="https://www.linkedin.com/company/nouricare-uganda-limited/?viewAsMember=true"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-light mb-3">Quick Links</h5>
+          <a class="btn btn-link text-light" href="index.html#About">About Us</a>
+          <a class="btn btn-link text-light" href="contact.html">Contact</a>
+          <a class="btn btn-link text-light" href="#">Privacy policy</a>
+          <a class="btn btn-link text-light" href="#">Terms & Conditions</a>
+           <a class="btn btn-link text-light" href="#">Support</a>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-light mb-3">Address</h5>
+          <p><i class="fa fa-map-marker-alt me-2"></i>Mbale, Uganda</p>
+          <p><i class="fa fa-phone-alt me-2"></i>+256 785 117257</p>
+          <p><i class="fa fa-envelope me-2"></i>nouricareuganda@gmail.com</p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-light mb-3">Newsletter</h5>
+          <p>Stay updated with our health tips and events.</p>
+          <div class="position-relative" style="max-width: 400px;">
+            <input class="form-control bg-transparent text-light border-light w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+            <button class="btn btn-primary position-absolute top-0 end-0 mt-2 me-2 py-2 px-3">Sign Up</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4 small">
+        © 2025 <strong>Nouricare Uganda</strong>. All Rights Reserved.<br>
+    <span class="text-secondary">Designed by 
+        <a href="https://wa.me/256761946745?text=Hello%20ES%20Graphics%2C%20I%20am%20interested%20in%20your%20services" 
+           target="_blank" 
+           class="text-primary fw-bold text-decoration-none">
+           ES Graphics
+        </a>
+    </span>
+      </div>
+    </div>
+  </footer>
+
+  
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
