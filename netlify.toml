@@ -3,6 +3,12 @@
 # NOTE: no [build] section on purpose — your existing Netlify build/publish
 # settings stay as they are. Only add one if you know you need it.
 
+# ADMIN_EMAIL is also your public contact e-mail (it appears on the website), so
+# Netlify's secret scanner flags it. It is not a secret, so exclude just that one key.
+# The password hash, authenticator secret and session secret stay fully scanned.
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "ADMIN_EMAIL"
+
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
